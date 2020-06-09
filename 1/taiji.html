@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .out-border{
+            width: 400px;
+            height: 400px;
+            border: 5px solid #000;
+            border-radius: 50%;
+            margin: 100px auto;
+            animation: rotating 5s infinite linear reverse;
+        }
+        .round{
+            width: 400px;
+            height: 200px;
+            border-top-left-radius: 200px;
+            border-top-right-radius: 200px;
+            background: #000;
+            position: relative;
+        }
+        .bom{
+            background: #fff;
+            transform: rotate(180deg);
+        }
+        .out-round{
+            width: 200px;
+            height: 200px;
+            background: #000;
+            border-radius: 50%;
+            position: absolute;
+            top: 100px;
+            z-index: 1;
+        }
+        .in-round{
+            width: 50px;
+            height: 50px;
+            background: #fff;
+            border-radius: 50%;
+            margin: 75px auto;
+        }
+        .out-w{
+            background: #fff;
+        }
+        .in-b{
+            background: #000;
+        }
+        @keyframes rotating{
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="out-border">
+        <div class="round">
+            <div class="out-round">
+                <div class="in-round"></div>
+            </div>
+        </div>
+        <div class="round bom">
+            <div class="out-round out-w">
+                <div class="in-round in-b"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

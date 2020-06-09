@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script> -->
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">{{message}}
+        <div v-text="text"></div>
+        <div v-html="text"></div>
+        <input type="button" value="点击+" v-on:click="add()">
+        <input type="button" value="点击-" @click="del()">{{num}}
+
+        <input type="button" value="点一下" @click="isShow()">
+        <div class="box" v-show="isSeen"></div>
+    </div>
+
+</body>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            num:1,
+            text:"<h1>今天星期二</h1>",
+            message:"这是第一次使用VUE",
+            isSeen:true
+        },
+        methods:{
+            isShow(){
+                this.isSeen = !this.isSeen;
+            },
+            add(){
+                this.num++;
+            },
+            del(){
+                this.num--;
+            }
+        }
+
+    })
+</script>
+</html>

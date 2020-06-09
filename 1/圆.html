@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img src="xia.jpg" id="imgs">
+</body>
+<canvas id="can" width="600px" height="500px" style="border: 1px solid #f00"></canvas>
+<script>
+    document.getElementById("imgs").onload = function () {
+   
+        var canvas = document.getElementById("can");
+        var cgt = canvas.getContext("2d");
+        var img = document.getElementById("imgs");
+        // cgt.fillStyle="yellow";
+        // cgt.fillRect(0,0,100,200);
+        // for(let i = 50 ;i < 500; i+=5){
+        //     cgt.beginPath();
+        //     cgt.arc(i,i,i,0,2*Math.PI,true);
+        //     cgt.closePath();
+        //     cgt.stroke();
+        // }
+         cgt.drawImage(img,50,20,400,300);     
+    }
+</script>
+</html>
