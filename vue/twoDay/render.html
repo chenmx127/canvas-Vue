@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <style>
+        .box{
+            color:#f0f;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{},
+        render(createElement){
+            return createElement("ul",
+            {
+                class:"box",
+                style:{fontSize:"30px"},
+                attrs:{
+                    item:"abc"
+                }
+            },
+            [
+                createElement("li","这是一"),
+                createElement("li", "这是二"),
+                createElement("li", "这是三")
+            ])
+        }
+
+    })
+</script>
+</html>

@@ -6,12 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="js/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <div id="app">
         {{name}}
         <button onclick="change()">更新</button>
         <button onclick="del()">销毁</button>
+        <button>点击</button>
     </div>
 </body>
 <script>
@@ -21,7 +23,10 @@
             name:"zheshiwode"
         },
         beforeCreate(){
-            alert("实例前")
+            alert("实例前");
+            // $("button").click(function () {
+            //     alert("我是谁~我在哪~")
+            // })
         },
         created(){
             alert("实例后")
@@ -30,7 +35,10 @@
             alert("挂载前")
         },
         mounted(){
-            alert("挂载后")
+            alert("挂载后");
+             $("button").click(function () {
+                alert("我是谁~我在哪~")
+            })
         },
         beforeUpdate(){
             alert("更新前")
