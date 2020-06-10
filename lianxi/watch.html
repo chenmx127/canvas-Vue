@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{sa}}</h1>
+        <h2>{{iu}}</h2>
+        <h3>{{sd.df}}</h3>
+    </div>
+</body>
+<script>
+    let vm=new Vue({
+        el:"#app",
+        data:{
+            sa:34,
+            iu:90,
+            sd:{
+                df:10
+            }
+        },
+
+    })
+    // vm.$watch("sa",function() {
+    //     alert("上的雕刻技术");
+    //     this.iu = this.sa + 10
+    // })
+    vm.$watch("sd",function() {
+        alert("这是1")
+    },{deep:true})
+    document.onclick=function(){
+        // vm.sa=23;
+        vm.sd.df=20;
+    }
+</script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <style>
+        .box{
+            width: 200px;
+            height: 50px;
+            background: #f00;
+        }
+        .obj{
+            font-size: 32px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="box" :class="{obj:addclass}">zheshisaxhuasso</div>
+        <!-- {{text1}}
+        <button onclick="add()">更新</button>
+        <button onclick="del()">销毁</button> -->
+    </div>
+</body>
+<script>
+    let vm= new Vue({
+        el:"#app",
+        data:{
+            // text1:"这晒啊长沙长沙实现",
+            addclass:true
+        },
+    })
+//         beforeCreate(){
+//             alert("实例前");
+//         },
+//         created() {
+//             alert("实例后");
+//         },
+//         beforeMount(){
+//             alert("挂载前")
+//         },
+//         mounted(){
+//             alert("挂载后")
+//         },
+//         beforeUpdate(){
+//             alert("更新前")
+//         },
+//         updated(){
+//             alert("更新后")
+//         },
+//         beforeDestroy(){
+//             alert("销毁前")
+//         },
+//         destroyed(){
+//             alert("销毁后")
+//         }
+//     })
+//     function add() {
+//         vm.text1="太狭隘是不是"
+//     }
+// function del(){
+//     vm.$destroy()
+// }
+</script>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-box></div>
+    </div>
+</body>
+<script>
+    Vue.directive("box",{
+        bind:function(el){
+            el.style.width="200px",
+            el.style.height="200px",
+            el.style.background="#f00",
+            el.style.position="absolute",
+            el.style.top="0px",
+            el.style.left="0px",
+            el.onmousedown = function (event) {
+                event = event || window.event;
+                //获取当前鼠标距离滑块边框的top与left值
+                var deltaX = event.clientX - el.offsetLeft;
+                var deltaY = event.clientY - el.offsetTop;
+                document.onmousemove = function (event) {
+                    event = event || window.event;
+                    //重新获取滑块距离浏览器的top与left值
+                    var x = event.clientX - deltaX;
+                    var y = event.clientY - deltaY;
+                    // console.log(clientWidth)
+                    if (x < 0) x = 0;
+                    if (y < 0) y = 0;
+                    if (x > document.clientWidth - el.clientWidth) {
+                        x = document.clientWidth - el.clientWidth;
+                    }
+                    if (y > document.clientHeight - el.clientHeight) {
+                        y = document.clientHeight - el.clientHeight;
+                    }
+                    el.style.left = x + "px";
+                    el.style.top = y + "px";
+                }
+            },
+            document.onmouseup = function () {
+                document.onmousemove = null;
+            }
+        }
+    })
+    new Vue({
+        el:"#app",
+        data:{}
+    })
+</script>
+</html>

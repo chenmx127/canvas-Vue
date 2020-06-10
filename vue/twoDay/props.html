@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <hello :title="post.title" :num1="post.num" bood="{aa:'dassad'}"></hello>
+    </div>
+    <template id="box">
+        <div>
+           <h1>{{title}}</h1>
+           <h2>{{num1}}</h2>
+           <h3>{{bood}}</h3>
+        </div>
+    </template>
+</body>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            post:{
+                num:1,
+                title:"则按课程"
+            }
+        },
+        components:{
+            "hello":{
+                template:"#box",
+                // props:["title","num1","bood"]
+                props:{
+                    title:String,
+                    num1:Number,
+                    bood:Object
+                }
+            }
+        }
+    })
+</script>
+</html>

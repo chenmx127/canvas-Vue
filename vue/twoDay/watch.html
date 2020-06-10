@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{num}}</h1>
+        <h1>{{xyz}}</h1>
+        <h1>{{aa.bb}}</h1>
+    </div>
+</body>
+<script>
+     let vm= new Vue({
+        el:"#app",
+        data:{
+            num:123,
+            xyz:546,
+            aa:{
+                bb:123
+            }
+        }
+    })
+    // vm.$watch("num",function(){
+    //     alert("gaibianle");
+    //     this.xyz=this.num+10;
+        
+    // })
+    vm.$watch("aa", function () {
+        alert("这是什么");
+    },
+    {
+        deep:true
+    })
+    document.onclick= function () {
+        vm.aa.bb=120;
+    }
+</script>
+</html>

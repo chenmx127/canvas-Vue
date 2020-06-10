@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <hello :tit="post.tit" :num="post.num" mn="{sbah:'sdhicsdhci'}"></hello>
+    </div>
+    <template id="bb"><div>
+        <h1>{{tit}}</h1>
+        <h3>{{num}}</h3>
+        <h2>{{mn}}</h2>
+    </div></template>
+</body>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            post:{
+                tit:"自己西奥斯",
+                num:34
+            }
+        },
+        // render(createElement){
+        //     return createElement("ul",
+        //     {
+        //         class:"box",
+        //         style:{
+        //             background:"red",
+        //             color:"yellow"
+        //         },
+        //         attrs:{
+        //             ma:"nn"
+        //         }
+        //     },
+        //     [
+        //         createElement("li","这是一"),
+        //         createElement("li", "这是二"),
+        //         createElement("li","这是三"),
+        //     ])
+        // }
+        components:{
+            "hello":{
+                template:"#bb",
+                props:['tit','num','mn']
+            }
+        }
+    })
+</script>
+</html>

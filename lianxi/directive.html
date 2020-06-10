@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-box>{{mess|cc}}</div>
+    </div>
+</body>
+<script>
+    Vue.directive("box",
+        {
+            bind:function(el) {
+            el.style.background="red",
+            el.style.width="100px",
+            el.style.height="100px",
+            el.style.position="absolute",
+            el.style.left="0px",
+            el.style.top="0px",
+            el.onmousedown=function(e){
+                e=event||window.event;
+                var x_w = e.clientX - el.offsetLeft;
+                var y_h = e.clientY - el.offsetTop;
+                // console.log(x_w,y_h);
+                document.onmousemove=function(e){
+                    var x = e.clientX - x_w;
+                    var y = e.clientY - y_h;
+                    el.style.top=y+"px";
+                    el.style.left=x+"px"
+                }
+            }
+            document.onmouseup=function(){
+                document.onmousemove=null;
+            }
+        } 
+     })
+    Vue.filter("cc",function(ca) {
+        return ca<10?'0'+ca :"sa"+ ca
+    })
+    new Vue({
+        el:'#app',
+        data:{
+            mess:5
+        }
+    })
+</script>
+</html>
