@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <hello>
+            {{message}}
+            <div v-text="con"></div>
+            <div v-html="con"></div>
+            <img v-bind:src="imgs" width="100px">
+            <div v-if="num == 0">这是0</div>
+            <div v-else-if="num == 1">这是1</div>
+            <div v-else>这是其他</div>
+            <div v-show="isSeen">sdasddsd</div>
+            <div v-for="(bb,index) in pome" :key="index">{{bb}}</div>
+            <div v-for="(aa,index) in arrs" :key="index">{{aa.name}}{{aa.id}}</div>
+            <div v-on:click="sshow()">我要点击</div>
+            <h1 slot="one">这是组件</h1>
+        </hello>
+    </div>
+    <template id="box">
+        <div>
+            <h1>这是模板</h1>
+            <slot></slot>
+            <slot name="one">这是slot</slot>
+            <slot name="two">这是slot</slot>
+        </div>
+    </template>
+</body>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            message:"今天是1",
+            con:"<h4>今天是2</h4>",
+            imgs:"cao.jpg",
+            num:45,
+            isSeen:true,
+            pome:[1,2,3,4],
+            arrs:[{name:"lisi",id:2},{name:"zhangsan",id:5}]
+        },
+        methods:{
+            sshow(){
+                this.isSeen=!this.isSeen
+            }
+        },
+        components:{
+            "hello":{
+                template:"#box"
+            }
+        }
+    })
+</script>
+</html>

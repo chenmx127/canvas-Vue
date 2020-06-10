@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input v-model="inputval">{{inputval}}
+        <div v-if="num == 0">点击</div>
+        <div v-else-if="num == 1">点击1</div>
+        <div v-else>点击2</div>
+        <div v-for="(item,index) in pome">
+            {{item}}
+        </div>
+        <!-- <div v-for="(name,index) in obj" :key="index">
+            <h3>{{name.name}}</h3>
+            <img v-bind:src="name.img" width="100px">
+            <img :src="name.img" width="100px">
+        </div> -->
+        <img :src="name" width="200px">
+    </div>
+</body>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                name:"./img/cao.jpg",
+                inputval: '',
+                num:23,
+                pome:['鹅鹅鹅','曲项向天歌','白毛浮绿水','红掌拨清波'],
+                // obj:[
+                //     {name:"张三",img:"./img/cao.jpg"},
+                //      { name: "李四", img: "./img/cao.jpg" }, 
+                //      { name: "王五", img: "./img/cao.jpg" }]
+            },
+        })
+    </script>
+</html>

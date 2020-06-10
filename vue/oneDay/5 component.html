@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <hello></hello>
+        <hello></hello>
+    </div>
+    <template id="box">
+        <div>
+            <h1 @click="dianji()">{{message}}</h1>
+            <ul v-for="(item,index) in obj" :key="index">
+                <li>{{item.name}}<img :src="item.img" width="100px"/></li>
+            </ul>
+        </div>
+    </template>
+</body>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        components:{
+            "hello":{
+                template:"#box",
+                data(){
+                    return{
+                        obj: [
+                            { name: "张三", img: "./img/cao.jpg" },
+                            { name: "李四", img: "./img/cao.jpg" },
+                            { name: "王五", img: "./img/cao.jpg" }
+                            ],
+                            message:"这时候我说的"
+                    }
+                },
+                methods:{
+                    dianji(){
+                        this.message="这句话使我哦的"
+                    }
+                }
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <hello>
+            <div slot="one">我是第一</div>
+            <div slot="two">我是第二</div>
+            <div slot="three">我是第三</div>
+            <h5>撒旦撒hi我i哈苏大扫除后代 </h5>
+        </hello>
+        <hello>
+            <div slot="one">我是第一</div>
+            <div slot="two">我是第二</div>
+            <div slot="three">我是第三</div>
+            <h3>宿舍网很差</h3>
+        </hello>
+        <hello>
+            <div slot="one">我是第一</div>
+            <div slot="two">我是第二</div>
+            <div slot="three">我是第三</div>
+            <h1>shadiasudhasidacs</h1>
+        </hello>
+    </div>
+    <template id="box">
+        <div> 
+            <span>这是开始</span>
+            <slot name="one">这是第一个</slot>
+            <slot name="two">这是第二个</slot>
+            <slot name="three">这是第三个</slot>
+            <h1>adashdiwdudxuisx</h1>
+            <slot></slot>
+        </div>
+    </template>
+    <!-- <div id="app">
+        <hello>
+            <div>这是我的话</div>
+            <div>这是我的话123</div>
+            <h1>这是我的话errerwww</h1>
+        </hello>
+    </div>
+    <template id="box">
+        <div><p>开始</p>
+            <slot></slot>
+            <p>结束</p>
+        </div>
+    </template> -->
+</body>
+<!-- <script>
+    let vm = new Vue({
+        el:"#app",
+        components:{
+            "hello":{
+                template:"#box"
+            }
+        }
+    })
+</script> -->
+
+<script>
+    Vue.component(
+        "hello",{
+            template: "#box"
+    }),
+    new Vue({
+        el:"#app",
+        
+    })
+</script>
+</html>

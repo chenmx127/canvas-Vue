@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <input v-model="inputval">{{inputval}}
+    <div id="app">{{message}}</div>
+    <!-- <script type="x-template" id="name">
+        <div>这是一句话：{{message}}</div>
+    </script> -->
+    <template id="name">
+        <div>这是一句话：{{message}}</div>
+    </template>
+</body>
+<script>
+    let vm = new Vue({
+            el: "#app",
+            data: {
+                message:"今天天气真不错"
+            },
+            template:"#name",
+            
+        })
+</script>
+</html>

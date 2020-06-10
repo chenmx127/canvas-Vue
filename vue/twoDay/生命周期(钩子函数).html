@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{name}}
+        <button onclick="change()">更新</button>
+        <button onclick="del()">销毁</button>
+    </div>
+</body>
+<script>
+    let vm=new Vue({
+        el:"#app",
+        data:{
+            name:"zheshiwode"
+        },
+        beforeCreate(){
+            alert("实例前")
+        },
+        created(){
+            alert("实例后")
+        },
+        beforeMount(){
+            alert("挂载前")
+        },
+        mounted(){
+            alert("挂载后")
+        },
+        beforeUpdate(){
+            alert("更新前")
+        },
+        updated(){
+            alert("更新后")
+        },
+        beforeDestroy(){
+            alert("销毁前")
+        },
+        destroyed(){
+            alert("销毁后")
+        }
+    })
+    function change(){
+        vm.name="我的话是真理"
+    }
+    function del(){
+        vm.$destroy()
+    }
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="点击1" @click="message='hello'">
+        <input type="button" value="点击2" @click="message='world'">
+        <component :is= "message"></component>
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+          message:"hello"  
+        },
+        components:{
+            "hello":{
+                template:
+                `
+                <div>
+                    <p>这是我要的<p>
+                </div>
+                `
+            },
+            "world": {
+                template:
+                    `
+                <div>
+                    <p>你想说什么<p>
+                </div>
+                `
+            }
+        }
+    })
+</script>
+</html>
