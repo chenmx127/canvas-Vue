@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+</head>
+<body>
+    <div id="app"><!-- <h3>{{item.provinceName}}</h3>
+                <h4>{{item.confirmedNum}}</h4> -->
+        <ul>
+            <li v-for="(item,index) in list" :key="index">
+                
+                <h3>{{item.title}}</h3>
+                <img :src="{{item.img}}" alt="">
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            list:[]
+        },
+        mounted(){
+            this.getdata()
+        },
+        methods:{
+            getdata(){
+                // axios.get('http://route.showapi.com/2217-2',{
+                //     params: {
+                //         showapi_appid: 245372,
+                //         showapi_sign: 'b2f6f519a25f4c7e81e3ea6c4ee7ac14'
+                //     }
+                // }).then(res=>{
+                //     console.log(res);
+                //     this.list=res.data.showapi_res_body.todayDetailList;
+                // })
+                axios.post('http://route.showapi.com/341-2?showapi_appid=46452&page=5&maxResult=20&showapi_sign=c3bc2247155b4219bffb60cac4fd315c').then(res=>{
+                    console.log(res);
+                    this.list=res.data.showapi_res_body.contentlist;
+                })
+            }
+        }
+    })
+</script>
+</html>

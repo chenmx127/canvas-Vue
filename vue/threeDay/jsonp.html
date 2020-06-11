@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.5.10/vue.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" @keyup="getList()" v-model="inptext">
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            inptext:''
+        },
+        mounted() {
+            // this.getList();
+        },
+        methods:{
+            getList(){
+                this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',{
+                    params:{
+                        wd:this.inptext
+                    },jsonp:'cb'
+                }).then(res => {
+                    console.log(res);
+                })
+            }
+        }
+    })
+</script>
+
+</html>

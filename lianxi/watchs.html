@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{num}}
+        <p>{{obj.nu}}</p>
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            num:12,
+            obj:{
+                nu:'asd'
+            }
+        }
+    })
+    // vm.$watch("num",function() {
+    //     alert('这是撒旦撒旦')
+    // })
+    vm.$watch('obj',function() {
+        alert('沾沾自喜')
+    },{deep:true})
+    document.onclick=function(){
+        // vm.num = 45;
+        vm.obj.nu = 'dbnfdjivdns'
+    }
+</script>
+</html>

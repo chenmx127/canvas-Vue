@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-dd>
+            {{ad|as}}
+        </div>
+    </div>
+</body>
+<script>
+    let vm=new Vue({
+        el:'#app',
+        data:{
+            ad:45
+        },
+        directives:{
+            'dd':{
+                bind:function(add){
+                    add.style.background="red",
+                    add.style.width="100px",
+                    add.style.height="100px",
+                    add.style.position="absolute",
+                    add.style.top="0px",
+                    add.style.left="0px",
+                    add.onmousedown=function(e){
+                        var w = e.clientX - add.offsetLeft;
+                        var h = e.clientY - add.offsetTop;
+                        document.onmousemove=function(e){
+                            var x= e.clientX-w;
+                            var y=e.clientY-h;
+                            if(x<0)x=0;
+                            if(y<0)y=0;
+                            add.style.left=x+"px";
+                            add.style.top=y+'px'
+                        }
+                    }
+                    document.onmouseup=function(){
+                        document.onmousemove=null;
+                    }
+                }
+            }
+        },
+        filters:{'as':function(xx) {
+            return xx<10?'0'+xx:'yued'+xx
+        }}
+    })
+</script>
+</html>

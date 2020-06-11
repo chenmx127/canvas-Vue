@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <style>
+        .bb{
+            color: aquamarine
+        }
+        .ss{
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="bb" :class="{ss:addclass}">是吃素的此时</div>
+        <!-- {{name}}
+        <button onclick="add()">更新</button>
+        <button onclick="del()">销毁</button> -->
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            // name:"废话废话的",
+            addclass:true
+        },
+    })
+    //     beforeCreate(){
+    //         alert("创建实例前")
+    //     },
+    //     created(){
+    //         alert('创建实例后')
+    //     },
+    //     beforeMount(){
+    //         alert('挂载前')
+    //     },
+    //     mounted(){
+    //         alert('挂在后')
+    //     },
+    //     beforeUpdate(){
+    //         alert('更新前')
+    //     },
+    //     updated(){
+    //         alert('更新后')
+    //     },
+    //     beforeDestroy(){
+    //         alert('销毁前')
+    //     },
+    //     destroyed(){
+    //         alert('销毁后')
+    //     }
+    // })
+    // function add() {
+    //     vm.name="天娱的热潮是"
+    // }
+    // function del() {
+    //     vm.$destroy()
+    // }
+</script>
+</html>

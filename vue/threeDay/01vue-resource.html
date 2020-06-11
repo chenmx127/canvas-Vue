@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script> -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue-resource/1.5.1/vue-resource.js"></script>
+</head>
+
+<body>
+    <div id="app">
+       <input type="text" @keyup="getdata()" v-model="inputval">
+       <ul>
+           <li v-for="(item,index) in baidudata" :key="index" >{{item}}</li>
+       </ul>
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            inputval:"",
+            baidudata:[]
+        },
+        mounted() {
+            // this.getdata()
+        },
+        
+        methods: {
+            getdata() {
+                this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su", {
+                    params: {
+                        wd: this.inputval
+                    },
+                    jsonp: 'cb'
+                }).then(res => {
+                    console.log(res); 
+                    this.baidudata = res.body.s
+                    })
+            }  
+        },
+    })
+</script>
+
+</html>

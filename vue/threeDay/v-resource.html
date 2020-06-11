@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(aa,index) in list" :key="index">
+                <h1>{{aa.provinceName}}</h1>
+                <p>{{aa.confirmedNum}}</p>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    let vm =new Vue({
+        el:'#app',
+        data:{
+            list:[]
+        },
+        mounted(){
+            this.getList()
+        },
+        methods:{
+            // getList(){
+            //     this.$http.post('http://route.showapi.com/1211-1?showapi_appid=46452&count=5&showapi_sign=c3bc2247155b4219bffb60cac4fd315c')
+            //     .then(res=>{
+            //         console.log(res);
+            //         this.list=res.body.showapi_res_body.data;
+            //     })
+            // }
+            getList(){
+                this.$http.get('http://route.showapi.com/2217-2',{
+                    params:{
+                        showapi_appid:245372,
+                        showapi_sign:'b2f6f519a25f4c7e81e3ea6c4ee7ac14'
+                    }
+                }).then(res=>{
+                    console.log(res);
+                    this.list= res.body.showapi_res_body.todayDetailList;
+                })
+            }
+        }
+    })
+</script>
+</html>
